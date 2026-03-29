@@ -22,4 +22,5 @@ test_events = [
     {"title": "Client Call", "start_time": "2:00 PM", "end_time": "3:00 PM"},
 ]
 
-print(get_calendar_summary(test_events))
+if __name__ == "__main__":
+    print(get_calendar_summary(test_events))

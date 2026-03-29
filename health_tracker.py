@@ -34,5 +34,6 @@ def analyze_health():
 
     return generate(prompt)
 
-log_health_data()
-print(analyze_health())
+if __name__ == "__main__":
+    log_health_data()
+    print(analyze_health())
