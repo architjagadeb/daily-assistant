@@ -1,3 +1,6 @@
+import schedule
+import time
+import threading
 from mcp.server.fastmcp import FastMCP
 from finance_tracker import analyze_finance
 from health_tracker import analyze_health
@@ -26,7 +29,15 @@ def get_calendar_events():
     """Fetches and summarizes calendar events"""
     return get_calendar_summary([])
 
-
+schedule.every().day.at("07:00").do(send_daily_digest)  # Morning digest
+schedule.every().day.at("21:00").do(run_evening_flow)   # Evening prompt + reply polling
+ 
+def run_scheduler():
+    while True:
+        schedule.run_pending()
+        time.sleep(30)
+ 
+threading.Thread(target=run_scheduler, daemon=True).start()
 
 if __name__ == "__main__":
     mcp.run()
