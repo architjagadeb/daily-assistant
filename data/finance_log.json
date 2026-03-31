@@ -6,3 +6,6 @@
 {"expense": "", "category": "", "timestamp": "2026-03-29T13:41:47.648803"}
 {"expense": "", "category": "", "timestamp": "2026-03-29T13:44:02.442404"}
 {"expense": "300", "category": "food", "timestamp": "2026-03-29T13:44:06.190023"}
+{"expense": 120, "category": "Food", "timestamp": "2026-03-31T09:00:21.688691"}
+{"expense": 350, "category": "Food", "timestamp": "2026-03-31T09:00:21.688691"}
+{"expense": 80, "category": "Transportation", "timestamp": "2026-03-31T09:00:21.688691"}
