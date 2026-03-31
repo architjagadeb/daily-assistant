@@ -1,19 +1,17 @@
 import os
 from dotenv import load_dotenv
-from google import genai
+from groq import Groq
 
-# Load environment variables from .env file
 load_dotenv()
 
-# Initialize Gemini client
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def generate(prompt):
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[{"role": "user", "content": prompt}]
     )
-    return response.text
+    return response.choices[0].message.content
 
 if __name__ == "__main__":
     print(generate("Say hello in 2 lines."))
