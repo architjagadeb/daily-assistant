@@ -2,6 +2,8 @@ import json
 from main import generate
 from datetime import datetime
 
+BASE_DIR = "/Users/architjagadeb/Desktop/Projects/daily-assistant"
+
 def log_health_data():
 
     sleep = input("Enter hours of sleep: ")
@@ -17,7 +19,7 @@ def log_health_data():
         "timestamp": datetime.now().isoformat()
     }
 
-    with open("data/health_log.json", "a") as f:
+    with open(f"{BASE_DIR}/data/health_log.json", "a") as f:
         json.dump(data, f)
         f.write("\n")
 
@@ -25,7 +27,7 @@ def log_health_data():
 
 def analyze_health():
 
-    with open("data/health_log.json", "r") as f:
+    with open(f"{BASE_DIR}/data/health_log.json", "r") as f:
         data = f.read()
 
     prompt = f""" Analyze the following heath data logs, tell whether i am getting adequate sleep, water and exercise. Also suggest improvements if needed. Here are the logs:

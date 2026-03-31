@@ -14,6 +14,8 @@ from calendar_handler import get_calendar_summary
 from health_tracker import analyze_health
 from finance_tracker import analyze_finance
 
+BASE_DIR = "/Users/architjagadeb/Desktop/Projects/daily-assistant"
+
 load_dotenv()
 
 EMAIL = os.getenv("EMAIL")
@@ -120,14 +122,14 @@ Message: {reply_text}"""
 
     timestamp = datetime.now().isoformat()
 
-    with open("data/finance_log.json", "a") as f:
+    with open(f"{BASE_DIR}/data/finance_log.json", "a") as f:
         for item in data.get("expenses", []):
             json.dump({"expense": item["expense"], "category": item["category"], "timestamp": timestamp}, f)
             f.write("\n")
 
     health = data.get("health", {})
     if health:
-        with open("data/health_log.json", "a") as f:
+        with open(f"{BASE_DIR}/data/health_log.json", "a") as f:
             json.dump({**health, "timestamp": timestamp}, f)
             f.write("\n")
 
